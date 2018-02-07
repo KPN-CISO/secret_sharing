@@ -1,0 +1,608 @@
+# Generic variables
+STATIC_BIN_DIR=static_bin
+DOWNLOAD_DIR=downloads
+PATCH_DIR=patches
+PWD!=pwd
+INCLUDE_DIR=include
+LIB_DIR=lib
+ABS_LIB_DIR=${PWD}/${LIB_DIR}
+MY_CFLAGS=-I${PWD}/${INCLUDE_DIR}
+MY_LDFLAGS=-L${PWD}/${LIB_DIR}
+
+# Bash specifics
+BASH_PACKAGE=bash-4.4
+BASH_FILE=${BASH_PACKAGE}.tar.gz
+BASH_URL=https://ftp.gnu.org/gnu/bash/${BASH_FILE}
+BASH_HASH=73de3b425faaac55e45456b0f6f6d8077b5dfa7bb76e0d1894a19361b4a2b6bd4fbbe182117ddbfe9b07b4d898fba03537c261badc9533dd3c0da891764c7f29
+BASH_DOWNLOAD=${DOWNLOAD_DIR}/${BASH_FILE}
+BASH_OUTPUT=${BASH_PACKAGE}/bash
+
+# Coreutils specifics
+COREUTILS_PACKAGE=coreutils-8.27
+COREUTILS_FILE=${COREUTILS_PACKAGE}.tar.xz
+COREUTILS_URL=https://ftp.gnu.org/gnu/coreutils/${COREUTILS_FILE}
+COREUTILS_HASH=abf3280aaa54e9bd5851df0eda2af1de1017ca174633e52d1e592455d46ea0e99812dda46d2f320e979553cef271485d8818c595bba6ed31264511a511c93679
+COREUTILS_DOWNLOAD=${DOWNLOAD_DIR}/${COREUTILS_FILE}
+COREUTILS_OUTPUT=base64 cat dd df kill mkdir mv rm sha512sum split
+BASE64_OUTPUT=${COREUTILS_PACKAGE}/src/base64
+CAT_OUTPUT=${COREUTILS_PACKAGE}/src/cat
+DD_OUTPUT=${COREUTILS_PACKAGE}/src/dd
+DF_OUTPUT=${COREUTILS_PACKAGE}/src/df
+KILL_OUTPUT=${COREUTILS_PACKAGE}/src/kill
+MKDIR_OUTPUT=${COREUTILS_PACKAGE}/src/mkdir
+MV_OUTPUT=${COREUTILS_PACKAGE}/src/mv
+RM_OUTPUT=${COREUTILS_PACKAGE}/src/rm
+SHA512SUM_OUTPUT=${COREUTILS_PACKAGE}/src/sha512sum
+SPLIT_OUTPUT=${COREUTILS_PACKAGE}/src/split
+
+# Glibc specifics
+GLIBC_PACKAGE=glibc-2.25
+GLIBC_FILE=${GLIBC_PACKAGE}.tar.bz2
+GLIBC_URL=https://ftp.gnu.org/gnu/glibc/${GLIBC_FILE}
+GLIBC_HASH=bb6c1b2deaf9c117ef5c19efdef587c5c9d4da9380066eaa85917b20cf1cb4df1406f612bb7f9482410275676916613d05a52a573eb14758eeea152e64fcdbe2
+GLIBC_DOWNLOAD=${DOWNLOAD_DIR}/${GLIBC_FILE}
+LIBDL_OUTPUT=${LIB_DIR}/libdl.a
+LIBNSL_OUTPUT=${LIB_DIR}/libnsl.a
+
+# Gpg2 specifics
+GPG2_PACKAGE=gnupg-2.0.30
+GPG2_FILE=${GPG2_PACKAGE}.tar.bz2
+GPG2_URL=https://gnupg.org/ftp/gcrypt/gnupg/${GPG2_FILE}
+GPG2_HASH=e60a57f7dc74b44f884fd50d5a9c51cef7df8c098644ebab9ef7d945a40b0e4a285d0dc80b10fe39d8e4c2cc9d6cbbe800a0ddae54883180dc755fe47ced3314
+GPG2_DOWNLOAD=${DOWNLOAD_DIR}/${GPG2_FILE}
+GPG2_OUTPUT=${GPG2_PACKAGE}/g10/gpg2
+GPG-AGENT_OUTPUT=${GPG2_PACKAGE}/agent/gpg-agent
+GPG2_PATCH=${PATCH_DIR}/${GPG2_PACKAGE}.patch
+
+# Grep specifics
+GREP_PACKAGE=grep-3.1
+GREP_FILE=${GREP_PACKAGE}.tar.xz
+GREP_URL=https://ftp.gnu.org/gnu/grep/${GREP_FILE}
+GREP_HASH=05494381c7dd8aad7e2ee4c17450de8d7b969a99dcfe17747db60df3475bf02d5323d091e896e8343e4f3251c29dc7f0b7a9f93c575c9d58ee2a57014c2c9d26
+GREP_DOWNLOAD=${DOWNLOAD_DIR}/${GREP_FILE}
+GREP_OUTPUT=${GREP_PACKAGE}/src/grep
+
+# Libassuan specifics
+LIBASSUAN_PACKAGE=libassuan-2.4.3
+LIBASSUAN_FILE=${LIBASSUAN_PACKAGE}.tar.bz2
+LIBASSUAN_URL=https://gnupg.org/ftp/gcrypt/libassuan/${LIBASSUAN_FILE}
+LIBASSUAN_HASH=2b0f58682b408fc58fa0ec2980b36e54ba66701bf504cf6c98ec652af43501bc7c18573bc78c5b83260f5a3bdb0ec8f4e0662bafd9bba3fe7287e77598e8e4c1
+LIBASSUAN_DOWNLOAD=${DOWNLOAD_DIR}/${LIBASSUAN_FILE}
+LIBASSUAN_OUTPUT=${LIB_DIR}/libassuan.a
+
+# Libgcrypt specifics
+LIBGCRYPT_PACKAGE=libgcrypt-1.7.6
+LIBGCRYPT_FILE=${LIBGCRYPT_PACKAGE}.tar.bz2
+LIBGCRYPT_URL=https://gnupg.org/ftp/gcrypt/libgcrypt/${LIBGCRYPT_FILE}
+LIBGCRYPT_HASH=fb7e20c50280f2ca715c3fc9a457f1cc22224797812f8dfa3ec756471bd0049c2cf75ffe12daa543aefe6cdcd1b90b4b9f943f148c073ad99d3a7dee42a8173f
+LIBGCRYPT_DOWNLOAD=${DOWNLOAD_DIR}/${LIBGCRYPT_FILE}
+LIBGCRYPT_OUTPUT=${LIB_DIR}/libgcrypt.a
+
+# Libgpg-error specifics
+LIBGPG-ERROR_PACKAGE=libgpg-error-1.27
+LIBGPG-ERROR_FILE=${LIBGPG-ERROR_PACKAGE}.tar.bz2
+LIBGPG-ERROR_URL=https://gnupg.org/ftp/gcrypt/libgpg-error/${LIBGPG-ERROR_FILE}
+LIBGPG-ERROR_HASH=51b313c1159074fdbbce84f63bd8afd84b3b58cd608714865b25bed84c1862d050708aa06ac3dab92f1906593df5121161e594c2809653b0fb2c236cae5dcc2f
+LIBGPG-ERROR_DOWNLOAD=${DOWNLOAD_DIR}/${LIBGPG-ERROR_FILE}
+LIBGPG-ERROR_OUTPUT=${LIB_DIR}/libgpg-error.a
+
+# Libksba specifics
+LIBKSBA_PACKAGE=libksba-1.3.5
+LIBKSBA_FILE=${LIBKSBA_PACKAGE}.tar.bz2
+LIBKSBA_URL=https://www.gnupg.org/ftp/gcrypt/libksba/${LIBKSBA_FILE}
+LIBKSBA_HASH=60179bfd109b7b4fd8d2b30a3216540f03f5a13620d9a5b63f1f95788028708a420911619f172ba57e945a6a2fcd2ef7eaafc5585a0eb2b9652cfadf47bf39a2
+LIBKSBA_DOWNLOAD=${DOWNLOAD_DIR}/${LIBKSBA_FILE}
+LIBKSBA_OUTPUT=${INCLUDE_DIR}/ksba.h
+
+# Ncurses specificcs
+NCURSES_PACKAGE=ncurses-6.0
+NCURSES_FILE=${NCURSES_PACKAGE}.tar.gz
+NCURSES_URL=https://ftp.gnu.org/gnu/ncurses/${NCURSES_FILE}
+NCURSES_HASH=9ec194f4783dae6de8c529cac31b5cfbfcfea212c5d47b1f87cd49df013e38f8580a9e7aa1384918df0921b4ba999d5e73eb6d6362cce2d7287e64308b673963
+NCURSES_DOWNLOAD=${DOWNLOAD_DIR}/${NCURSES_FILE}
+NCURSES_OUTPUT=${LIB_DIR}/libncurses.a
+
+# Openssl specifics
+OPENSSL_PACKAGE=openssl-1.0.2k
+OPENSSL_FILE=${OPENSSL_PACKAGE}.tar.gz
+OPENSSL_URL=https://www.openssl.org/source/${OPENSSL_FILE}
+OPENSSL_HASH=0d314b42352f4b1df2c40ca1094abc7e9ad684c5c35ea997efdd58204c70f22a1abcb17291820f0fff3769620a4e06906034203d31eb1a4d540df3e0db294016
+OPENSSL_DOWNLOAD=${DOWNLOAD_DIR}/${OPENSSL_FILE}
+OPENSSL_PATCH=${PATCH_DIR}/${OPENSSL_PACKAGE}.patch
+OPENSSL_OUTPUT=${OPENSSL_PACKAGE}/apps/openssl
+
+# Pinentry specifics
+PINENTRY_PACKAGE=pinentry-1.0.0
+PINENTRY_FILE=${PINENTRY_PACKAGE}.tar.bz2
+PINENTRY_URL=https://gnupg.org/ftp/gcrypt/pinentry/${PINENTRY_FILE}
+PINENTRY_HASH=f109236707c51871b5020ef807a551366461fafcfbe09bf8cda19d4b163a42cf622562b905ceb41429f1d648b3f3d27807538709da6a135b67f9888709eccd62
+PINENTRY_DOWNLOAD=${DOWNLOAD_DIR}/${PINENTRY_FILE}
+PINENTRY_OUTPUT=${PINENTRY_PACKAGE}/tty/pinentry-tty
+
+# Pth specifics
+PTH_PACKAGE=pth-2.0.7
+PTH_FILE=${PTH_PACKAGE}.tar.gz
+PTH_URL=ftp://ftp.gnu.org/gnu/pth/${PTH_FILE}
+PTH_HASH=f79d74047c50e06f3198356f88647c5c1c8a04ebdd94641fc31d5ab0fd2750d86615fcb81da2f98d7ea73d012a501195d3fa09060571d18dcfdaec5d7a0ecb12
+PTH_DOWNLOAD=${DOWNLOAD_DIR}/${PTH_FILE}
+PTH_OUTPUT=${LIB_DIR}/libpth.a
+
+# Readline specifics
+READLINE_PACKAGE=readline-7.0
+READLINE_FILE=${READLINE_PACKAGE}.tar.gz
+READLINE_URL=https://ftp.gnu.org/gnu/readline/${READLINE_FILE}
+READLINE_HASH=18243189d39bf0d4c8a76cddcce75243c1bae8824c686e9b6ba352667607e5b10c5feb79372a1093c1c388d821841670702e940df12eae94bcebdeed90047870
+READLINE_DOWNLOAD=${DOWNLOAD_DIR}/${READLINE_FILE}
+READLINE_OUTPUT=${LIB_DIR}/libreadline.a
+
+# Unzip specifics
+UNZIP_PACKAGE=unzip60
+UNZIP_FILE=${UNZIP_PACKAGE}.tar.gz
+UNZIP_URL=https://downloads.sourceforge.net/project/infozip/UnZip%206.x%20%28latest%29/UnZip%206.0/${UNZIP_FILE}
+UNZIP_HASH=0694e403ebc57b37218e00ec1a406cae5cc9c5b52b6798e0d4590840b6cdbf9ddc0d9471f67af783e960f8fa2e620394d51384257dca23d06bcd90224a80ce5d
+UNZIP_DOWNLOAD=${DOWNLOAD_DIR}/${UNZIP_FILE}
+UNZIP_PATCH=${PATCH_DIR}/${UNZIP_PACKAGE}.patch
+UNZIP_OUTPUT=${UNZIP_PACKAGE}/unzip
+
+# Zip specifics
+ZIP_PACKAGE=zip30
+ZIP_FILE=${ZIP_PACKAGE}.tar.gz
+ZIP_URL=https://downloads.sourceforge.net/project/infozip/Zip%203.x%20%28latest%29/3.0/${ZIP_FILE}
+ZIP_HASH=c1c3d62bf1426476c0f9919b568013d6d7b03514912035f09ee283226d94c978791ad2af5310021e96c4c2bf320bfc9d0b8f4045c48e4667e034d98197e1a9b3
+ZIP_DOWNLOAD=${DOWNLOAD_DIR}/${ZIP_FILE}
+ZIP_PATCH=${PATCH_DIR}/${ZIP_PACKAGE}.patch
+ZIP_OUTPUT=${ZIP_PACKAGE}/zip
+
+# Zlib specifics
+ZLIB_PACKAGE=zlib-1.2.11
+ZLIB_FILE=${ZLIB_PACKAGE}.tar.gz
+ZLIB_URL=https://zlib.net/${ZLIB_FILE}
+ZLIB_HASH=73fd3fff4adeccd4894084c15ddac89890cd10ef105dd5e1835e1e9bbb6a49ff229713bd197d203edfa17c2727700fce65a2a235f07568212d820dca88b528ae
+ZLIB_DOWNLOAD=${DOWNLOAD_DIR}/${ZLIB_FILE}
+ZLIB_OUTPUT=${LIB_DIR}/libz.a
+
+# Set makeopts to number of CPU's to speed up
+MAKEOPTS != echo "-j`grep -c "^processor" /proc/cpuinfo`"
+
+# Define PHONY targets to enable "make <tool>", "make downloads" and "make patches"
+.PHONY: all base64 bash cat dd df gpg2 gpg-agent grep kill mkdir mv openssl openssl.cnf pinentry-tty rm sha512sum split unzip zip downloads patches coreutils glibc
+
+all: base64 bash cat dd df gpg2 gpg-agent grep kill mkdir mv openssl openssl.cnf pinentry-tty rm sha512sum split unzip zip
+coreutils: ${COREUTILS_OUTPUT}
+glibc: ${LIBDL_OUTPUT} ${LIBNSL_OUTPUT}
+
+base64: ${STATIC_BIN_DIR}/base64
+bash: ${STATIC_BIN_DIR}/bash
+cat: ${STATIC_BIN_DIR}/cat
+dd: ${STATIC_BIN_DIR}/dd
+df: ${STATIC_BIN_DIR}/df
+gpg2: ${STATIC_BIN_DIR}/gpg2
+gpg-agent: ${STATIC_BIN_DIR}/gpg-agent
+grep: ${STATIC_BIN_DIR}/grep
+kill: ${STATIC_BIN_DIR}/kill
+mkdir: ${STATIC_BIN_DIR}/mkdir
+mv: ${STATIC_BIN_DIR}/mv
+openssl: ${STATIC_BIN_DIR}/openssl
+openssl.cnf: ${STATIC_BIN_DIR}/openssl.cnf
+pinentry-tty: ${STATIC_BIN_DIR}/pinentry-tty
+rm: ${STATIC_BIN_DIR}/rm
+sha512sum: ${STATIC_BIN_DIR}/sha512sum
+split: ${STATIC_BIN_DIR}/split
+unzip: ${STATIC_BIN_DIR}/unzip
+zip: ${STATIC_BIN_DIR}/zip
+
+# Downloads
+downloads:  ${BASH_DOWNLOAD} ${COREUTILS_DOWNLOAD} ${GLIBC_DOWNLOAD} ${GREP_DOWNLOAD} ${GPG2_DOWNLOAD} ${LIBASSUAN_DOWNLOAD} ${LIBGCRYPT_DOWNLOAD} ${LIBGPG-ERROR_DOWNLOAD} ${LIBKSBA_DOWNLOAD} ${NCURSES_DOWNLOAD} ${OPENSSL_DOWNLOAD} ${PINENTRY_DOWNLOAD} ${PTH_DOWNLOAD} ${READLINE_DOWNLOAD} ${UNZIP_DOWNLOAD} ${ZIP_DOWNLOAD} ${ZLIB_DOWNLOAD}
+
+${BASH_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${BASH_DOWNLOAD}" "${BASH_URL}"
+	echo "${BASH_HASH}  ${BASH_DOWNLOAD}" > "${BASH_DOWNLOAD}.sha512"
+	sha512sum -c "${BASH_DOWNLOAD}.sha512" || rm "${BASH_DOWNLOAD}"
+
+${COREUTILS_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${COREUTILS_DOWNLOAD}" "${COREUTILS_URL}"
+	echo "${COREUTILS_HASH}  ${COREUTILS_DOWNLOAD}" > "${COREUTILS_DOWNLOAD}.sha512"
+	sha512sum -c "${COREUTILS_DOWNLOAD}.sha512" || rm "${COREUTILS_DOWNLOAD}"
+
+${GLIBC_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${GLIBC_DOWNLOAD}" "${GLIBC_URL}"
+	echo "${GLIBC_HASH}  ${GLIBC_DOWNLOAD}" > "${GLIBC_DOWNLOAD}.sha512"
+	sha512sum -c "${GLIBC_DOWNLOAD}.sha512" || rm "${GLIBC_DOWNLOAD}"
+
+${GPG2_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${GPG2_DOWNLOAD}" "${GPG2_URL}"
+	echo "${GPG2_HASH}  ${GPG2_DOWNLOAD}" > "${GPG2_DOWNLOAD}.sha512"
+	sha512sum -c "${GPG2_DOWNLOAD}.sha512" || rm "${GPG2_DOWNLOAD}"
+
+${GREP_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${GREP_DOWNLOAD}" "${GREP_URL}"
+	echo "${GREP_HASH}  ${GREP_DOWNLOAD}" > "${GREP_DOWNLOAD}.sha512"
+	sha512sum -c "${GREP_DOWNLOAD}.sha512" || rm "${GREP_DOWNLOAD}"
+
+${LIBASSUAN_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${LIBASSUAN_DOWNLOAD}" "${LIBASSUAN_URL}"
+	echo "${LIBASSUAN_HASH}  ${LIBASSUAN_DOWNLOAD}" > "${LIBASSUAN_DOWNLOAD}.sha512"
+	sha512sum -c "${LIBASSUAN_DOWNLOAD}.sha512" || rm "${LIBASSUAN_DOWNLOAD}"
+
+${LIBGCRYPT_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${LIBGCRYPT_DOWNLOAD}" "${LIBGCRYPT_URL}"
+	echo "${LIBGCRYPT_HASH}  ${LIBGCRYPT_DOWNLOAD}" > "${LIBGCRYPT_DOWNLOAD}.sha512"
+	sha512sum -c "${LIBGCRYPT_DOWNLOAD}.sha512" || rm "${LIBGCRYPT_DOWNLOAD}"
+
+${LIBGPG-ERROR_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${LIBGPG-ERROR_DOWNLOAD}" "${LIBGPG-ERROR_URL}"
+	echo "${LIBGPG-ERROR_HASH}  ${LIBGPG-ERROR_DOWNLOAD}" > "${LIBGPG-ERROR_DOWNLOAD}.sha512"
+	sha512sum -c "${LIBGPG-ERROR_DOWNLOAD}.sha512" || rm "${LIBGPG-ERROR_DOWNLOAD}"
+
+${LIBKSBA_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${LIBKSBA_DOWNLOAD}" "${LIBKSBA_URL}"
+	echo "${LIBKSBA_HASH}  ${LIBKSBA_DOWNLOAD}" > "${LIBKSBA_DOWNLOAD}.sha512"
+	sha512sum -c "${LIBKSBA_DOWNLOAD}.sha512" || rm "${LIBKSBA_DOWNLOAD}"
+
+${NCURSES_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${NCURSES_DOWNLOAD}" "${NCURSES_URL}"
+	echo "${NCURSES_HASH}  ${NCURSES_DOWNLOAD}" > "${NCURSES_DOWNLOAD}.sha512"
+	sha512sum -c "${NCURSES_DOWNLOAD}.sha512" || rm "${NCURSES_DOWNLOAD}"
+
+${OPENSSL_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${OPENSSL_DOWNLOAD}" "${OPENSSL_URL}"
+	echo "${OPENSSL_HASH}  ${OPENSSL_DOWNLOAD}" > "${OPENSSL_DOWNLOAD}.sha512"
+	sha512sum -c "${OPENSSL_DOWNLOAD}.sha512" || rm "${OPENSSL_DOWNLOAD}"
+
+${PINENTRY_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${PINENTRY_DOWNLOAD}" "${PINENTRY_URL}"
+	echo "${PINENTRY_HASH}  ${PINENTRY_DOWNLOAD}" > "${PINENTRY_DOWNLOAD}.sha512"
+	sha512sum -c "${PINENTRY_DOWNLOAD}.sha512" || rm "${PINENTRY_DOWNLOAD}"
+
+${PTH_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${PTH_DOWNLOAD}" "${PTH_URL}"
+	echo "${PTH_HASH}  ${PTH_DOWNLOAD}" > "${PTH_DOWNLOAD}.sha512"
+	sha512sum -c "${PTH_DOWNLOAD}.sha512" || rm "${PTH_DOWNLOAD}"
+
+${READLINE_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${READLINE_DOWNLOAD}" "${READLINE_URL}"
+	echo "${READLINE_HASH}  ${READLINE_DOWNLOAD}" > "${READLINE_DOWNLOAD}.sha512"
+	sha512sum -c "${READLINE_DOWNLOAD}.sha512" || rm "${READLINE_DOWNLOAD}"
+
+${UNZIP_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${UNZIP_DOWNLOAD}" "${UNZIP_URL}"
+	echo "${UNZIP_HASH}  ${UNZIP_DOWNLOAD}" > "${UNZIP_DOWNLOAD}.sha512"
+	sha512sum -c "${UNZIP_DOWNLOAD}.sha512" || rm "${UNZIP_DOWNLOAD}"
+
+${ZIP_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${ZIP_DOWNLOAD}" "${ZIP_URL}"
+	echo "${ZIP_HASH}  ${ZIP_DOWNLOAD}" > "${ZIP_DOWNLOAD}.sha512"
+	sha512sum -c "${ZIP_DOWNLOAD}.sha512" || rm "${ZIP_DOWNLOAD}"
+
+${ZLIB_DOWNLOAD}:
+	mkdir -p "${DOWNLOAD_DIR}"
+	wget -O "${ZLIB_DOWNLOAD}" "${ZLIB_URL}"
+	echo "${ZLIB_HASH}  ${ZLIB_DOWNLOAD}" > "${ZLIB_DOWNLOAD}.sha512"
+	sha512sum -c "${ZLIB_DOWNLOAD}.sha512" || rm "${ZLIB_DOWNLOAD}"
+
+# Patches
+patches: ${PATCH_DIR}/generic-patch.sh ${GPG2_PATCH} ${OPENSSL_PATCH} ${UNZIP_PATCH} ${ZIP_PATCH}
+
+# Generic patcher to replace -lgpg-error and -lassuan to their static locations
+# Done in a separate shell script to prevent character-escaping-hell
+${PATCH_DIR}/generic-patch.sh:
+	mkdir -p "${PATCH_DIR}"
+	echo "IyEvYmluL2Jhc2gKClNPVVJDRV9GSUxFPSIkMSIKQkFDS1VQX0ZJTEU9IiQxLm9yZyIKUEFUQ0hFRF9GSUxFPSIkMS5tb2QiCkxJQl9ESVI9IiQyIgoKY2F0ICIkU09VUkNFX0ZJTEUiIHwgc2VkIC1lICJzLy1sZ3BnLWVycm9yLy4uXC8uLlwvJHtMSUJfRElSLy9cLy9cXFwvfVwvbGliZ3BnLWVycm9yLmEvZyIgXAogICAgICAgICAgICAgICAgICAgICAgICAgLWUgInMvLWxhc3N1YW4vLi5cLy4uXC8ke0xJQl9ESVIvL1wvL1xcXC99XC9saWJhc3N1YW4uYS9nIiA+ICIkUEFUQ0hFRF9GSUxFIgoKbXYgIiRTT1VSQ0VfRklMRSIgIiRCQUNLVVBfRklMRSIKbXYgIiRQQVRDSEVEX0ZJTEUiICIkU09VUkNFX0ZJTEUiCgo=" | base64 -d > "${PATCH_DIR}/generic-patch.sh"
+	chmod 755 "${PATCH_DIR}/generic-patch.sh"
+
+sharkie: ${STATIC_BIN_DIR}/bash ${STATIC_BIN_DIR}/base64
+	echo "IyEvYmluL2Jhc2gKClNFQUxFTj0iNDAiCk1BTlBPUz0iMjAiCk1BTkxFRlQ9IjE3IgpNQU5SSUdIVD0iMjMiCk1BTkRJUj0iMSIKTUFOU1BFRUQ9MQoKU0hBUktQT1M9IjEwIgpTSEFSS0xFRlQ9IjUiClNIQVJLUklHSFQ9IjM1IgpTSEFSS0RJUj0iMSIKU0hBUktTUEVFRD0yCgojIH5+fn5+fn5+flxvL35+fn5+fn5+fn5+fi98fn5+fn5+fn4KIyAgICAgQSAgICAgICAgICAgICBCICAgICAgICAgIEMKCiMgfn5+fn5+fn5+L3x+fn5+fn5+fn5+fn5cby9+fn5+fn5+fgojICAgICBBICAgICAgICAgICAgIEIgICAgICAgICAgQwoKd2hpbGUgdHJ1ZQpkbwoKIGlmIFsgIiRTSEFSS0RJUiIgPSAiMSIgXQogdGhlbgogIFNIQVJLPSIvfCIKIGVsc2UKICBTSEFSSz0ifFxcIgogZmkKCiBpZiBbICIkTUFOUE9TIiAtbHQgIiRTSEFSS1BPUyIgXQogdGhlbgogIEE9JE1BTlBPUwogIEI9JCgoJFNIQVJLUE9TLSRNQU5QT1MtMykpCiAgQz0kKCgkU0VBTEVOLSRTSEFSS1BPUykpCiAgRD0iXG8vIgogIEU9IiRTSEFSSyIKIGVsc2UKICBBPSRTSEFSS1BPUwogIEI9JCgoJE1BTlBPUy0kU0hBUktQT1MtMikpCiAgQz0kKCgkU0VBTEVOLSRNQU5QT1MtMSkpCiAgRD0iJFNIQVJLIgogIEU9IlxvLyIKIGZpCiBGPSQoKCRNQU5QT1MtJFNIQVJLUE9TKSkKIGlmIFsgIiRGIiAtZ3QgIi0zIiAtYSAiJEYiIC1sdCAiMiIgXQogdGhlbgogIENPTExJU0lPTj0iMSIKIGVsc2UKICBDT0xMSVNJT049IjAiCiBmaQogI2VjaG8gIiRTSEFSS1BPUyAkQSAkQiAkQyAkRiAkQ09MTElTSU9OIgoKIGZvcigoQ09VTlQ9MTskQ09VTlQ8PSRBO0NPVU5UKyspKQogZG8KICBwcmludGYgIn4iCiBkb25lCgogaWYgWyAiJENPTExJU0lPTiIgPSAiMCIgXQogdGhlbgogIHByaW50ZiAiJEQiCiAgZm9yKChDT1VOVD0xOyRDT1VOVDw9JEI7Q09VTlQrKykpCiAgZG8KICAgcHJpbnRmICJ+IgogIGRvbmUKICBwcmludGYgIiRFIgogZWxzZQogIGlmIFsgIiRTSEFSS0RJUiIgPSAiMSIgXQogIHRoZW4KICAgaWYgWyAiJEYiID0gIi0yIiBdOyB0aGVuIHByaW50ZiAiJEQke0U6MToyfSI7IGZpOwogICBpZiBbICIkRiIgPSAiLTEiIF07IHRoZW4gcHJpbnRmICIkRCR7RToyOjF9IjsgZmk7CiAgIGlmIFsgIiRGIiA9ICIwIiBdOyB0aGVuIHByaW50ZiAiJEUiOyBmaTsKICAgaWYgWyAiJEYiID0gIjEiIF07IHRoZW4gcHJpbnRmICIke0Q6MDoxfSRFIjsgZmk7CiAgZWxzZQogICBpZiBbICIkRiIgPSAiLTIiIF07IHRoZW4gcHJpbnRmICIke0Q6MDoyfSRFIjsgZmk7CiAgIGlmIFsgIiRGIiA9ICItMSIgXTsgdGhlbiBwcmludGYgIiR7RDowOjF9JEUiOyBmaTsKICAgaWYgWyAiJEYiID0gIjAiIF07IHRoZW4gcHJpbnRmICIkRCR7RToyOjF9IjsgZmk7CiAgIGlmIFsgIiRGIiA9ICIxIiBdOyB0aGVuIHByaW50ZiAiJEQke0U6MToyfSI7IGZpOwogIGZpCiBmaQoKIGZvcigoQ09VTlQ9MTskQ09VTlQ8PSRDO0NPVU5UKyspKQogZG8KICBwcmludGYgIn4iCiBkb25lCgogcHJpbnRmICJcciIKCiBpZiBbICIkU0hBUktESVIiID0gIjEiIF0KIHRoZW4KICBTSEFSS1BPUz0kKCgkU0hBUktQT1MtJFNIQVJLU1BFRUQpKQogZWxzZQogIFNIQVJLUE9TPSQoKCRTSEFSS1BPUyskU0hBUktTUEVFRCkpCiBmaQogaWYgWyAiJFNIQVJLUE9TIiAtbGUgIiRTSEFSS0xFRlQiIF0KIHRoZW4KICBTSEFSS0RJUj0wCiBmaQogaWYgWyAiJFNIQVJLUE9TIiAtZ2UgIiRTSEFSS1JJR0hUIiBdCiB0aGVuCiAgU0hBUktESVI9MQogZmkKCiBpZiBbICIkTUFORElSIiA9ICIxIiBdCiB0aGVuCiAgTUFOUE9TPSQoKCRNQU5QT1MtJE1BTlNQRUVEKSkKIGVsc2UKICBNQU5QT1M9JCgoJE1BTlBPUyskTUFOU1BFRUQpKQogZmkKIGlmIFsgIiRNQU5QT1MiIC1sZSAiJE1BTkxFRlQiIF0KIHRoZW4KICBNQU5ESVI9MAogZmkKIGlmIFsgIiRNQU5QT1MiIC1nZSAiJE1BTlJJR0hUIiBdCiB0aGVuCiAgTUFORElSPTEKIGZpCgogc2xlZXAgMC4xCmRvbmUK" | "${STATIC_BIN_DIR}/base64" -d | "${STATIC_BIN_DIR}/bash"
+
+# Script to modify @LIB_DIR@ markers in prepatch files with the actual content of ${LIB_DIR}
+# Done in a separate shell script to prevent character-escaping-hell
+${PATCH_DIR}/prepatch2patch.sh:
+	mkdir -p "${PATCH_DIR}"
+	echo "IyEvYmluL2Jhc2gKCkxJQl9ESVI9IiQxIgpzZWQgLWUgInMvQExJQl9ESVJALyR7TElCX0RJUi8vXC8vXFxcL30vZyIK" | base64 -d > "${PATCH_DIR}/prepatch2patch.sh"
+	chmod 755 "${PATCH_DIR}/prepatch2patch.sh"
+
+# Package specific patches.
+# Note the hardcoded version numbers, patches are version specific anyways so
+# using variables wouldn't make sense
+${PATCH_DIR}/gnupg-2.0.30.patch: ${PATCH_DIR}/prepatch2patch.sh
+	mkdir -p "${PATCH_DIR}"
+	echo "LS0tIGdudXBnLTIuMC4zMC5vcmcvZzEwL01ha2VmaWxlCTIwMTctMDgtMDEgMTM6NTc6MzEuNjMwMDgwODEzICswMjAwCisrKyBnbnVwZy0yLjAuMzAvZzEwL01ha2VmaWxlCTIwMTctMDgtMDEgMTQ6MDI6MzcuNzU0MDY5MzgxICswMjAwCkBAIC02OTMsNyArNjkzLDcgQEAKIAogZ3BnMiQoRVhFRVhUKTogJChncGcyX09CSkVDVFMpICQoZ3BnMl9ERVBFTkRFTkNJRVMpICQoRVhUUkFfZ3BnMl9ERVBFTkRFTkNJRVMpIAogCUBybSAtZiBncGcyJChFWEVFWFQpCi0JJChBTV9WX0NDTEQpJChMSU5LKSAkKGdwZzJfT0JKRUNUUykgJChncGcyX0xEQUREKSAkKExJQlMpCisJJChBTV9WX0NDTEQpJChMSU5LKSAtc3RhdGljICQoZ3BnMl9PQkpFQ1RTKSAgLi4vY29tbW9uL2xpYmNvbW1vbi5hIC4uL2pubGliL2xpYmpubGliLmEgLi4vZ2wvbGliZ251LmEgLi4vY29tbW9uL2xpYmdwZ3JsLmEgLi4vLi4vQExJQl9ESVJAL2xpYm5jdXJzZXMuYSAgLi4vLi4vQExJQl9ESVJAL2xpYmdwZy1lcnJvci5hIC4uLy4uL0BMSUJfRElSQC9saWJhc3N1YW4uYSAuLi8uLi9ATElCX0RJUkAvbGliei5hIC4uLy4uL0BMSUJfRElSQC9saWJyZWFkbGluZS5hIC4uLy4uL0BMSUJfRElSQC9saWJnY3J5cHQuYSAuLi8uLi9ATElCX0RJUkAvbGlibmN1cnNlcy5hCiAKIGdwZ3YyJChFWEVFWFQpOiAkKGdwZ3YyX09CSkVDVFMpICQoZ3BndjJfREVQRU5ERU5DSUVTKSAkKEVYVFJBX2dwZ3YyX0RFUEVOREVOQ0lFUykgCiAJQHJtIC1mIGdwZ3YyJChFWEVFWFQpCi0tLSBnbnVwZy0yLjAuMzAub3JnL2FnZW50L01ha2VmaWxlCTIwMTctMDgtMDEgMTM6NTc6MzEuNjQ5MDgwODEyICswMjAwCisrKyBnbnVwZy0yLjAuMzAvYWdlbnQvTWFrZWZpbGUJMjAxNy0wOC0wMSAxMzo1MjoyMi40MjQwOTIzNjEgKzAyMDAKQEAgLTY3OCw3ICs2NzgsNyBAQAogCiBncGctYWdlbnQkKEVYRUVYVCk6ICQoZ3BnX2FnZW50X09CSkVDVFMpICQoZ3BnX2FnZW50X0RFUEVOREVOQ0lFUykgJChFWFRSQV9ncGdfYWdlbnRfREVQRU5ERU5DSUVTKSAKIAlAcm0gLWYgZ3BnLWFnZW50JChFWEVFWFQpCi0JJChBTV9WX0NDTEQpJChncGdfYWdlbnRfTElOSykgJChncGdfYWdlbnRfT0JKRUNUUykgJChncGdfYWdlbnRfTERBREQpICQoTElCUykKKwkkKEFNX1ZfQ0NMRCkkKGdwZ19hZ2VudF9MSU5LKSAtc3RhdGljICQoZ3BnX2FnZW50X09CSkVDVFMpIC4uL2NvbW1vbi9saWJjb21tb25wdGguYSAuLi9qbmxpYi9saWJqbmxpYi5hIC4uL2dsL2xpYmdudS5hIC4uLy4uL0BMSUJfRElSQC9saWJncGctZXJyb3IuYSAuLi8uLi9ATElCX0RJUkAvbGliYXNzdWFuLmEgLi4vLi4vQExJQl9ESVJAL2xpYmdjcnlwdC5hIC4uLy4uL0BMSUJfRElSQC9saWJkbC5hIC4uLy4uL0BMSUJfRElSQC9saWJuc2wuYSAuLi8uLi9ATElCX0RJUkAvbGlicHRoLmEKIAogZ3BnLXByZXNldC1wYXNzcGhyYXNlJChFWEVFWFQpOiAkKGdwZ19wcmVzZXRfcGFzc3BocmFzZV9PQkpFQ1RTKSAkKGdwZ19wcmVzZXRfcGFzc3BocmFzZV9ERVBFTkRFTkNJRVMpICQoRVhUUkFfZ3BnX3ByZXNldF9wYXNzcGhyYXNlX0RFUEVOREVOQ0lFUykgCiAJQHJtIC1mIGdwZy1wcmVzZXQtcGFzc3BocmFzZSQoRVhFRVhUKQo=" | base64 -d | patches/prepatch2patch.sh "${LIB_DIR}" > "${PATCH_DIR}/gnupg-2.0.30.patch"
+
+${PATCH_DIR}/openssl-1.0.2k.patch:
+	mkdir -p "${PATCH_DIR}"
+	echo "LS0tIG9wZW5zc2wtMS4wLjJrLW9yZy9NYWtlZmlsZS5zaGFyZWQJMjAxNy0wMS0yNiAxNDoyMjowMy4wMDAwMDAwMDAgKzAxMDAKKysrIG9wZW5zc2wtMS4wLjJrL01ha2VmaWxlLnNoYXJlZAkyMDE3LTA3LTMxIDExOjAzOjU4Ljg3MjQwNzk3MiArMDIwMApAQCAtNywxMiArNywxMiBAQAogCiAjIENDIGNvbnRhaW5zIHRoZSBjdXJyZW50IGNvbXBpbGVyLiAgVGhpcyBvbmUgTVVTVCBiZSBkZWZpbmVkCiBDQz1jYwotQ0ZMQUdTPSQoQ0ZMQUcpCitDRkxBR1M9JChDRkxBRykgLXN0YXRpYwogIyBMREZMQUdTIGNvbnRhaW5zIGZsYWdzIHRvIGJlIHVzZWQgd2hlbiB0ZW1wb3Jhcnkgb2JqZWN0IGZpbGVzICh3aGVuIGJ1aWxkaW5nCiAjIHNoYXJlZCBsaWJyYXJpZXMpIGFyZSBjcmVhdGVkLCBvciB3aGVuIGFuIGFwcGxpY2F0aW9uIGlzIGxpbmtlZC4KICMgU0hBUkVEX0xERkxBR1MgY29udGFpbnMgZmxhZ3MgdG8gYmUgdXNlZCB3aGVuIHRoZSBzaGFyZWQgbGlicmFyeSBpcyBjcmVhdGVkLgotTERGTEFHUz0KLVNIQVJFRF9MREZMQUdTPQorTERGTEFHUz0tc3RhdGljCitTSEFSRURfTERGTEFHUz0tc3RhdGljCiAKIE5NPW5tCiAK" | base64 -d > "${PATCH_DIR}/openssl-1.0.2k.patch"
+
+${PATCH_DIR}/unzip60.patch:
+	mkdir -p "${PATCH_DIR}"
+	echo "ZGlmZiAtTmF1ciB1bnppcDYwLm9yZy91bml4L01ha2VmaWxlIHVuemlwNjAvdW5peC9NYWtlZmlsZQotLS0gdW56aXA2MC5vcmcvdW5peC9NYWtlZmlsZQkyMDA5LTAxLTE4IDIzOjQxOjE4LjAwMDAwMDAwMCArMDEwMAorKysgdW56aXA2MC91bml4L01ha2VmaWxlCTIwMTctMDctMzEgMDk6MjU6NDMuMDYyNjQ5NzQ4ICswMjAwCkBAIC0yODAsNyArMjgwLDcgQEAKICMgbWFrZSB1dGlsaXRpZXMgaWYgZGVmYXVsdDogIGNoYW5nZSAidW56aXAkRToiIHRvICJ1bnppcCRFOiYiCiAKIHVuemlwJEU6CSQoT0JKUykgJChMSUJCWjIpCSMgYWRkIGAmJyBmb3IgcGFyYWxsZWwgbWFrZXMKLQkkKExEKSAkKExGKSAtTCQoSVpfQlpJUDIpICQoTE9CSlMpICQoTF9CWjIpICQoTEYyKQorCSQoTEQpIC1zdGF0aWMgJChMRikgLUwkKElaX0JaSVAyKSAkKExPQkpTKSAkKExfQloyKSAkKExGMikKIAogdW56aXBzZngkRToJJChPQkpYKQkJCSMgYWRkIGAmJyBmb3IgcGFyYWxsZWwgbWFrZXMKIAkkKExEKSAkKFNMKSAkKExPQkpYKSAkKFNMMikK" | base64 -d > "${PATCH_DIR}/unzip60.patch"
+
+${PATCH_DIR}/zip30.patch:
+	mkdir -p "${PATCH_DIR}"
+	echo "LS0tIHppcDMwLm9yZy91bml4L01ha2VmaWxlCTIwMDgtMDUtMDcgMDg6MzM6NTYuMDAwMDAwMDAwICswMjAwCisrKyB6aXAzMC91bml4L01ha2VmaWxlCTIwMTctMDctMzEgMDk6NTE6MDUuNzY3NTg3MzA1ICswMjAwCkBAIC01Nyw5ICs1Nyw5IEBACiAjICAgQ0ZMQUdTICAgIGZsYWdzIGZvciBDIGNvbXBpbGUKICMgICBMRkxBR1MxICAgZmxhZ3MgYWZ0ZXIgb3V0cHV0IGZpbGUgc3BlYywgYmVmb3JlIG9iaiBmaWxlIGxpc3QKICMgICBMRkxBR1MyICAgZmxhZ3MgYWZ0ZXIgb2JqIGZpbGUgbGlzdCAobGlicmFyaWVzLCBldGMpCi1DRkxBR1NfTk9PUFQgPSAtSS4gLURVTklYICQoTE9DQUxfWklQKQotQ0ZMQUdTID0gLU8yICQoQ0ZMQUdTX05PT1BUKQotTEZMQUdTMSA9CitDRkxBR1NfTk9PUFQgPSAtSS4gLURVTklYICQoTE9DQUxfWklQKSAtc3RhdGljCitDRkxBR1MgPSAtTzIgJChDRkxBR1NfTk9PUFQpIC1zdGF0aWMKK0xGTEFHUzEgPSAtc3RhdGljCiBMRkxBR1MyID0gLXMKIAogIyBvYmplY3QgZmlsZSBsaXN0cwpAQCAtMTI1LDcgKzEyNSw3IEBACiB6aXBzbWFuOiAkKFpJUFMpICQoWklQTUFOVUFMcykKIAogemlwJEU6ICQoT0JKWikgJChPQkpJKSAkKE9CSkEpICQoTElCX0JaKQotCSQoQklORCkgLW8gemlwJEUgJChMRkxBR1MxKSAkKE9CSlopICQoT0JKSSkgJChPQkpBKSAkKExGTEFHUzIpCisJJChCSU5EKSAtc3RhdGljIC1vIHppcCRFICQoTEZMQUdTMSkgJChPQkpaKSAkKE9CSkkpICQoT0JKQSkgJChMRkxBR1MyKQogemlwbm90ZSRFOiAkKE9CSk4pCiAJJChCSU5EKSAtbyB6aXBub3RlJEUgJChMRkxBR1MxKSAkKE9CSk4pICQoTEZMQUdTMikKIHppcGNsb2FrJEU6ICQoT0JKQykgJChPQ1JDVEIpCg==" | base64 -d > "${PATCH_DIR}/zip30.patch"
+
+# Bash
+${STATIC_BIN_DIR}/bash: ${BASH_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${BASH_OUTPUT}" "${STATIC_BIN_DIR}/bash"
+
+${BASH_OUTPUT}: ${BASH_DOWNLOAD}
+	tar -xvzf "${BASH_DOWNLOAD}"
+	cd "${BASH_PACKAGE}"; ./configure --enable-mem-scramble --without-bash-malloc --enable-static-link
+	cd "${BASH_PACKAGE}"; make ${MAKEOPTS}
+
+# coreutils
+${STATIC_BIN_DIR}/base64: ${BASE64_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${BASE64_OUTPUT}" "${STATIC_BIN_DIR}/base64"
+
+${BASE64_OUTPUT}: ${COREUTILS_PACKAGE}/compilation-done
+	touch "${BASE64_OUTPUT}"
+
+${STATIC_BIN_DIR}/cat: ${CAT_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${CAT_OUTPUT}" "${STATIC_BIN_DIR}/cat"
+
+${CAT_OUTPUT}: ${COREUTILS_PACKAGE}/compilation-done
+	touch "${CAT_OUTPUT}"
+
+${STATIC_BIN_DIR}/dd: ${DD_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${DD_OUTPUT}" "${STATIC_BIN_DIR}/dd"
+
+${DD_OUTPUT}: ${COREUTILS_PACKAGE}/compilation-done
+	touch "${DD_OUTPUT}"
+
+${STATIC_BIN_DIR}/df: ${DF_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${DF_OUTPUT}" "${STATIC_BIN_DIR}/df"
+
+${DF_OUTPUT}: ${COREUTILS_PACKAGE}/compilation-done
+	touch "${DF_OUTPUT}"
+
+${STATIC_BIN_DIR}/kill: ${KILL_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${KILL_OUTPUT}" "${STATIC_BIN_DIR}/kill"
+
+${KILL_OUTPUT}: ${COREUTILS_PACKAGE}/compilation-done
+	touch "${KILL_OUTPUT}"
+
+${STATIC_BIN_DIR}/mkdir: ${MKDIR_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${MKDIR_OUTPUT}" "${STATIC_BIN_DIR}/mkdir"
+
+${MKDIR_OUTPUT}: ${COREUTILS_PACKAGE}/compilation-done
+	touch "${MKDIR_OUTPUT}"
+
+${STATIC_BIN_DIR}/mv: ${MV_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${MV_OUTPUT}" "${STATIC_BIN_DIR}/mv"
+
+${MV_OUTPUT}: ${COREUTILS_PACKAGE}/compilation-done
+	touch "${MV_OUTPUT}"
+
+${STATIC_BIN_DIR}/rm: ${RM_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${RM_OUTPUT}" "${STATIC_BIN_DIR}/rm"
+
+${RM_OUTPUT}: ${COREUTILS_PACKAGE}/compilation-done
+	touch "${RM_OUTPUT}"
+
+${STATIC_BIN_DIR}/sha512sum: ${SHA512SUM_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${SHA512SUM_OUTPUT}" "${STATIC_BIN_DIR}/sha512sum"
+
+${SHA512SUM_OUTPUT}: ${COREUTILS_PACKAGE}/compilation-done
+	touch "${SHA512SUM_OUTPUT}"
+
+${STATIC_BIN_DIR}/split: ${SPLIT_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${SPLIT_OUTPUT}" "${STATIC_BIN_DIR}/split"
+
+${SPLIT_OUTPUT}: ${COREUTILS_PACKAGE}/compilation-done
+	touch "${SPLIT_OUTPUT}"
+
+${COREUTILS_PACKAGE}/compilation-done: ${COREUTILS_DOWNLOAD}
+	tar -xvJf "${COREUTILS_DOWNLOAD}"
+	export LDFLAGS="-static"; cd ${COREUTILS_PACKAGE};./configure
+	export LDFLAGS="-static"; cd ${COREUTILS_PACKAGE}; make ${MAKEOPTS}
+	touch ${COREUTILS_PACKAGE}/compilation-done
+
+# glibc
+${LIBDL_OUTPUT}: ${GLIBC_PACKAGE}/compilation-done
+	mkdir -p "${LIB_DIR}"
+	cp "${GLIBC_PACKAGE}/build/dlfcn/libdl.a" "${LIBDL_OUTPUT}"
+
+${LIBNSL_OUTPUT}: ${GLIBC_PACKAGE}/compilation-done
+	mkdir -p "${LIB_DIR}"
+	cp "${GLIBC_PACKAGE}/build/nis/libnsl.a" "${LIBNSL_OUTPUT}"
+
+
+${GLIBC_PACKAGE}/compilation-done: ${GLIBC_DOWNLOAD}
+	tar -xvjf "${GLIBC_DOWNLOAD}"
+	mkdir -p "${GLIBC_PACKAGE}/build"
+	cd "${GLIBC_PACKAGE}/build"; ../configure --enable-static --enable-static-nss --disable-sanity-checks --disable-werror
+	cd "${GLIBC_PACKAGE}/build"; make ${MAKEOPTS}
+	touch "${GLIBC_PACKAGE}/compilation-done"
+
+# gpg2/gpg-agent
+${STATIC_BIN_DIR}/gpg2: ${GPG2_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${GPG2_OUTPUT}" "${STATIC_BIN_DIR}/gpg2"
+
+${STATIC_BIN_DIR}/gpg-agent: ${GPG-AGENT_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${GPG-AGENT_OUTPUT}" "${STATIC_BIN_DIR}/gpg-agent"
+
+${GPG-AGENT_OUTPUT}: ${GPG2_PACKAGE}/compilation-done
+	touch "${GPG-AGENT_OUTPUT}"
+
+${GPG2_OUTPUT}: ${GPG2_PACKAGE}/compilation-done
+	touch ${GPG2_OUTPUT}
+
+${GPG2_PACKAGE}/compilation-done: ${GPG2_DOWNLOAD} ${GPG2_PATCH} ${NCURSES_OUTPUT} ${LIBGPG-ERROR_OUTPUT} ${LIBASSUAN_OUTPUT} ${ZLIB_OUTPUT} ${READLINE_OUTPUT} ${LIBGCRYPT_OUTPUT} ${PTH_OUTPUT} ${LIBDL_OUTPUT} ${LIBNSL_OUTPUT} ${LIBKSBA_OUTPUT}
+	tar -xvjf ${GPG2_DOWNLOAD}
+	export CFLAGS="${MY_CFLAGS}" LDFLAGS="${MY_LDFLAGS}"; cd ${GPG2_PACKAGE}; ./configure --disable-gpgsm --disable-scdaemon --disable-doc --disable-gpgtar --disable-bzip2 --disable-exec --disable-photo-viewers --disable-keyserver-helpers --disable-ldap --disable-hkp --disable-finger --disable-generic --disable-ccid-driver --disable-dns-srv --disable-dns-pka --disable-dns-cert --disable-rpath --disable-nls --with-libgpg-error-prefix="${ABS_LIB_DIR}" --with-libgcrypt-prefix="${ABS_LIB_DIR}" --with-libassuan-prefix="${ABS_LIB_DIR}" --with-pth-prefix="${ABS_LIB_DIR}"
+	patch -p0 < ${GPG2_PATCH}
+	export CFLAGS="${MY_CFLAGS}" LDFLAGS="${MY_LDFLAGS}"; cd "${GPG2_PACKAGE}"; make ${MAKEOPTS}
+	touch "${GPG2_PACKAGE}/compilation-done"
+
+# Grep
+${STATIC_BIN_DIR}/grep: ${GREP_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${GREP_OUTPUT}" "${STATIC_BIN_DIR}/grep"
+
+${GREP_OUTPUT}: ${GREP_DOWNLOAD}
+	tar -xvJf "${GREP_DOWNLOAD}"
+	export LDFLAGS="-static"; cd "${GREP_PACKAGE}"; ./configure --disable-perl-regexp
+	export LDFLAGS="-static"; cd "${GREP_PACKAGE}"; make ${MAKEOPTS}
+
+# libassuan
+${LIBASSUAN_OUTPUT}: ${LIBASSUAN_DOWNLOAD}
+	tar -xvjf "${LIBASSUAN_DOWNLOAD}"
+	export CFLAGS="-I/home/post039/static_bin/tmpfs/include" LDFLAGS="-L/home/post039/static_bin/tmpfs/lib"; cd "${LIBASSUAN_PACKAGE}"; ./configure  --enable-static --with-libgpg-error-prefix="${ABS_LIB_DIR}"
+	export CFLAGS="${MY_CFLAGS}" LDFLAGS="${MY_LDFLAGS}"; cd "${LIBASSUAN_PACKAGE}"; make ${MAKEOPTS}
+	mkdir -p "${LIB_DIR}"
+	cp "${LIBASSUAN_PACKAGE}/src/.libs/libassuan.a" "${LIBASSUAN_OUTPUT}"
+	cp "${LIBASSUAN_PACKAGE}/src/.libs/libassuan.so" "${LIB_DIR}"
+	mkdir -p "${LIB_DIR}/bin"
+	cp "${LIBASSUAN_PACKAGE}/src/libassuan-config" "${LIB_DIR}/bin"
+	mkdir -p "${INCLUDE_DIR}"
+	cp "${LIBASSUAN_PACKAGE}/src/assuan.h" "${INCLUDE_DIR}"
+
+# libgcrypt
+${LIBGCRYPT_OUTPUT}: ${LIBGCRYPT_DOWNLOAD} ${LIBGPG-ERROR_OUTPUT}
+	tar -xvjf "${LIBGCRYPT_DOWNLOAD}"
+	export CFLAGS="${MY_CFLAGS}" LDFLAGS="-static ${MY_LDFLAGS}"; cd "${LIBGCRYPT_PACKAGE}"; ./configure --enable-static --with-libgpg-error-prefix="${ABS_LIB_DIR}"
+	export CFLAGS="${MY_CFLAGS}" LDFLAGS="-static ${MY_LDFLAGS}"; cd "${LIBGCRYPT_PACKAGE}"; make ${MAKEOPTS}
+	mkdir -p "${LIB_DIR}"
+	cp "${LIBGCRYPT_PACKAGE}/src/.libs/libgcrypt.a" "${LIBGCRYPT_OUTPUT}"
+	export CFLAGS="${MY_CFLAGS}" LDFLAGS="${MY_LDFLAGS}"; cd "${LIBGCRYPT_PACKAGE}"; ./configure --enable-shared --with-libgpg-error-prefix="${ABS_LIB_DIR}"
+	export CFLAGS="${MY_CFLAGS}" LDFLAGS="${MY_LDFLAGS}"; cd "${LIBGCRYPT_PACKAGE}"; make ${MAKEOPTS}
+	cp "${LIBGCRYPT_PACKAGE}/src/.libs/libgcrypt.so" "${LIB_DIR}"
+	mkdir -p "${LIB_DIR}/bin"
+	cp "${LIBGCRYPT_PACKAGE}/src/libgcrypt-config" "${LIB_DIR}/bin"
+	mkdir -p "${INCLUDE_DIR}"
+	cp "${LIBGCRYPT_PACKAGE}/src/gcrypt.h" "${INCLUDE_DIR}"
+
+# libgpg-error
+${LIBGPG-ERROR_OUTPUT}: ${LIBGPG-ERROR_DOWNLOAD}
+	tar -xvjf "${LIBGPG-ERROR_DOWNLOAD}"
+	export LDFLAGS="-static"; cd "${LIBGPG-ERROR_PACKAGE}"; ./configure  --disable-nls --disable-rpath
+	export LDFLAGS="-static"; cd "${LIBGPG-ERROR_PACKAGE}"; make ${MAKEOPTS}
+	mkdir -p "${LIB_DIR}"
+	cp "${LIBGPG-ERROR_PACKAGE}/src/.libs/libgpg-error.a" "${LIBGPG-ERROR_OUTPUT}"
+	cd "${LIBGPG-ERROR_PACKAGE}"; ./configure  --disable-nls --disable-rpath
+	cd "${LIBGPG-ERROR_PACKAGE}"; make ${MAKEOPTS}
+	mkdir -p "${INCLUDE_DIR}"
+	cp "${LIBGPG-ERROR_PACKAGE}/src/gpg-error.h" "${LIBGPG-ERROR_PACKAGE}/src/gpgrt.h" "${INCLUDE_DIR}"
+	mkdir -p "${LIB_DIR}"
+	cp "${LIBGPG-ERROR_PACKAGE}/src/.libs/libgpg-error.so" "${LIB_DIR}"
+	mkdir -p "${LIB_DIR}/bin"
+	cp "${LIBGPG-ERROR_PACKAGE}/src/gpg-error-config" "${LIB_DIR}/bin"
+
+# Libksba
+${LIBKSBA_OUTPUT}: ${LIBKSBA_DOWNLOAD}
+	tar -xvjf "${LIBKSBA_DOWNLOAD}"
+	mkdir -p "${INCLUDE_DIR}"
+	cp "${LIBKSBA_PACKAGE}/src/ksba.h" "${LIBKSBA_OUTPUT}"
+
+# ncurses
+${NCURSES_OUTPUT}: ${NCURSES_DOWNLOAD}
+	tar -xvzf "${NCURSES_DOWNLOAD}"
+	export CPPFLAGS="-P"; cd "${NCURSES_PACKAGE}"; ./configure
+	export CPPFLAGS="-p"; cd "${NCURSES_PACKAGE}"; make ${MAKEOPTS}
+	mkdir -p "${LIB_DIR}"
+	cp "${NCURSES_PACKAGE}/lib/libncurses.a" "${NCURSES_OUTPUT}"
+
+# OpenSSL
+${STATIC_BIN_DIR}/openssl: ${OPENSSL_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${OPENSSL_OUTPUT}" "${STATIC_BIN_DIR}/openssl"
+
+${OPENSSL_OUTPUT}: ${OPENSSL_DOWNLOAD} ${OPENSSL_PATCH}
+	tar -xvzf "${OPENSSL_DOWNLOAD}"
+	patch -p0 < "${OPENSSL_PATCH}"
+	cd "${OPENSSL_PACKAGE}"; ./Configure no-shared linux-generic64
+	cd "${OPENSSL_PACKAGE}"; make ${MAKEOPTS}
+
+${STATIC_BIN_DIR}/openssl.cnf:
+	touch "${STATIC_BIN_DIR}/openssl.cnf"
+
+# pinentry-tty
+${STATIC_BIN_DIR}/pinentry-tty: ${PINENTRY_OUTPUT} ${PATCH_DIR}/generic-patch.sh
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${PINENTRY_OUTPUT}" "${STATIC_BIN_DIR}/pinentry-tty"
+
+${PINENTRY_OUTPUT}: ${PINENTRY_DOWNLOAD} ${PATCH_DIR}/generic-patch.sh ${LIBGPG-ERROR_OUTPUT} ${LIBASSUAN_OUTPUT}
+	tar -xvjf "${PINENTRY_DOWNLOAD}"
+	export CFLAGS="${MY_CFLAGS}" LDFLAGS="-static ${MY_LDFLAGS}"; cd "${PINENTRY_PACKAGE}"; ./configure --enable-pinentry-tty --disable-pinentry-gtk2 --disable-pinentry-gnome3 --disable-pinentry-emacs --disable-fallback-curses --disable-pinentry-qt --disable-pinentry-curses --disable-inside-emacs --with-libgpg-error-prefix="${ABS_LIB_DIR}" --with-libassuan-prefix="${ABS_LIB_DIR}"
+	"${PATCH_DIR}/generic-patch.sh" "${PINENTRY_PACKAGE}/tty/Makefile" "${LIB_DIR}"
+	export LDFLAGS="-static"; cd "${PINENTRY_PACKAGE}"; make ${MAKEOPTS}
+	touch "${PINENTRY_OUTPUT}"
+
+# pth
+${PTH_OUTPUT}: ${PTH_DOWNLOAD}
+	tar -xvzf "${PTH_DOWNLOAD}"
+	export LDFLAGS="-static"; cd "${PTH_PACKAGE}"; ./configure
+	export LDFLAGS="-static"; cd "${PTH_PACKAGE}"; make
+	mkdir -p "${LIB_DIR}"
+	cp "${PTH_PACKAGE}/.libs/libpth.a" "${PTH_OUTPUT}"
+	cp "${PTH_PACKAGE}/.libs/libpth.so" "${LIB_DIR}"
+	mkdir -p "${LIB_DIR}/bin"
+	cp "${PTH_PACKAGE}/pth-config" "${LIB_DIR}/bin"
+	mkdir -p "${INCLUDE_DIR}"
+	cp "${PTH_PACKAGE}/pth.h" "${INCLUDE_DIR}"
+
+# readline
+${READLINE_OUTPUT}: ${READLINE_DOWNLOAD}
+	tar -xvzf "${READLINE_DOWNLOAD}"
+	export LDFLAGS="-static"; cd "${READLINE_PACKAGE}"; ./configure --enable-static --disable-shared
+	export LDFLAGS="-static"; cd "${READLINE_PACKAGE}"; make ${MAKEOPTS}
+	mkdir -p "${LIB_DIR}"
+	cp "${READLINE_PACKAGE}/libreadline.a" "${READLINE_OUTPUT}"
+
+# unzip
+${STATIC_BIN_DIR}/unzip: ${UNZIP_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${UNZIP_OUTPUT}" "${STATIC_BIN_DIR}/unzip"
+
+${UNZIP_OUTPUT}: ${UNZIP_DOWNLOAD} ${UNZIP_PATCH}
+	tar -xvzf "${UNZIP_DOWNLOAD}"
+	patch -p0 < "${UNZIP_PATCH}"
+	cd "${UNZIP_PACKAGE}"; make ${MAKEOPTS} -f unix/Makefile linux_noasm
+	touch "${UNZIP_OUTPUT}"
+
+# zip
+${STATIC_BIN_DIR}/zip: ${ZIP_OUTPUT}
+	mkdir -p "${STATIC_BIN_DIR}"
+	cp "${ZIP_OUTPUT}" "${STATIC_BIN_DIR}/zip"
+
+${ZIP_OUTPUT}: ${ZIP_DOWNLOAD} ${ZIP_PATCH}
+	tar -xvzf "${ZIP_DOWNLOAD}"
+	patch -p0 < "${ZIP_PATCH}"
+	cd "${ZIP_PACKAGE}"; make ${MAKEOPTS} -f unix/Makefile generic_gcc
+	touch "${ZIP_OUTPUT}"
+
+# zlib
+${ZLIB_OUTPUT}: ${ZLIB_DOWNLOAD}
+	tar -xvzf "${ZLIB_DOWNLOAD}"
+	cd "${ZLIB_PACKAGE}"; ./configure
+	cd "${ZLIB_PACKAGE}"; make ${MAKEOPTS}
+	cp "${ZLIB_PACKAGE}/libz.a" "${ZLIB_PACKAGE}/libz.so" "${LIB_DIR}"
+	cp "${ZLIB_PACKAGE}/zlib.h" "${ZLIB_PACKAGE}/zconf.h" "${INCLUDE_DIR}"
+
